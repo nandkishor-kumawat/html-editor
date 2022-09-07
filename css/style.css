@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    --borderColor: #cbd5e0;
+    --backgroundColor: #e7e9eb;
+}
+
+html.darktheme {
+    --borderColor: #333642;
+    --backgroundColor: #1d1e22;
+}
+
+.horizontal {
+    --divH: auto;
+    --divW: 50%;
+    --resizerH: 100%;
+    --resizerW: 10px;
+    --resizercursor: col-resize;
+    --direction: row;
+    --borderL: 10px 0 10px 10px;
+    --borderR: 10px 10px 10px 0;
+}
+
+.vertical {
+    --divH: 50%;
+    --divW: 100%;
+    --resizerH: 10px;
+    --resizerW: 100%;
+    --resizercursor: row-resize;
+    --direction: column;
+}
+
+#navbar {
+    height: 40px;
+    background-color: var(--backgroundColor);
+    display: flex;
+}
+
+#navbar .navbtns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 7px;
+    cursor: pointer;
+}
+
+.resultsize {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 7px;
+    position: absolute;
+    right: 10px;
+    height: 40px;
+}
+
+#framesize {
+    font-family: 'Montserrat', 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    color: #000;
+    user-select: none;
+}
+
+html.darktheme #framesize {
+    color: #fff;
+}
+
+html.darktheme .navbtns svg {
+    stroke: #fff;
+}
+
+html.darktheme #changeTheme svg path,
+html.darktheme #changeLayout svg path {
+    fill: #fff;
+}
+
+.navbtns:hover {
+    background-color: #ccc;
+}
+
+html.darktheme .navbtns:hover {
+    background-color: #333642;
+}
+
+.navbtns:active>svg {
+    transform: scale(0.8);
+    transition: transform .3s ease;
+}
+
+.navbtns:active>svg.ham {
+    transform: scale(1);
+}
+
+svg.ham {
+    cursor: pointer;
+    margin-right: -10px;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+html.darktheme svg.ham path {
+    stroke: #fff;
+}
+
+svg.ham path {
+    fill: none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke: #000;
+    stroke-width: 5.5;
+    stroke-linecap: round;
+}
+
+svg.ham .top {
+    stroke-dasharray: 40 172;
+}
+
+svg.ham .middle {
+    stroke-dasharray: 40 111;
+}
+
+svg.ham .bottom {
+    stroke-dasharray: 40 172;
+}
+
+#menu.active .ham .top {
+    stroke-dashoffset: -132px;
+}
+
+#menu.active .ham .middle {
+    stroke-dashoffset: -71px;
+}
+
+#menu.active .ham .bottom {
+    stroke-dashoffset: -132px;
+}
+
+#menu.active {
+    position: relative;
+    z-index: 10;
+}
+
+#iframeResult,
+#iframewrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.CodeMirror {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: var(--direction);
+    border: 10px solid var(--borderColor);
+    height: calc(100vh - 40px);
+    width: 100%;
+}
+
+.container__left {
+    width: var(--divW);
+    height: var(--divH);
+    /* min-width: 50px; */
+}
+
+.resizer {
+    background-color: var(--borderColor);
+    cursor: var(--resizercursor);
+    height: var(--resizerH);
+    width: var(--resizerW);
+    z-index: 1;
+    position: relative;
+}
+
+.container__right {
+    /* min-width: 50px; */
+    width: var(--divW);
+    height: var(--divH);
+}
+
+#resizer[data-direction="horizontal"]:after {
+    color: #000;
+    position: absolute;
+    bottom: 50%;
+}
+
+#resizer[data-direction="vertical"]::after {
+    color: #000;
+    position: absolute;
+    transform: rotate(90deg);
+    left: 50%;
+    top: calc(50% - 10px);
+}
+
+html.darktheme #resizer:after {
+    color: #fff;
+}
+
+#menubar {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    z-index: 10;
+    background-color: #fff;
+    color: #000;
+    border-top: none;
+    border-left: none;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+
+#menubar.active {
+    width: 320px;
+    height: 320px;
+    font-size: 16px;
+    border: 1px solid silver;
+    border-left: 0;
+    border-top: 0;
+}
+
+.menubtns {
+    border-bottom: 1px solid silver;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.menubtns ion-icon {
+    margin: 3px 20px -6px 10px;
+    font-size: 25px;
+}
+
+#themes {
+    width: fit-content;
+    height: 32px;
+    cursor: pointer;
+    outline: none;
+}
+
+.menubtns:hover {
+    background-color: #cbd5e054;
+    transform: scale(1.1);
+    transition: transform .1s ease;
+}
+
+.menubtns.copyright {
+    justify-content: center;
+    background-color: #f8f8f8;
+}
+
+#menuOverlay {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    display: none;
+}
+
+#menuOverlay.visible {
+    display: block;
+}
