@@ -41,7 +41,6 @@ resizable = function() {
                 }
                 break;
             case 'horizontal':
-            default:
                 const w = (prevSiblingWidth + dx) * 100 / resizer.parentNode.getBoundingClientRect().width;
                 if (w <= 100) {
                     prevSibling.style.width = `${w}%`;
