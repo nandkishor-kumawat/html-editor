@@ -7,63 +7,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Editor</title>
     <link rel="shortcut icon" href="https://dl.dropboxusercontent.com/s/6ebxj5q11de638d/html_5.svg" type="image/x-icon">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="lib/codemirror.css">
-    <link rel="stylesheet" href="addon/scroll/simplescrollbars.css">
-    <link rel="stylesheet" href="addon/hint/show-hint.css">
-    <link rel="stylesheet" href="addon/fold/foldgutter.css" />
-    <link rel="stylesheet" href="theme/3024-night.css">
-    <link rel="stylesheet" href="theme/abbott.css">
-    <link rel="stylesheet" href="theme/abcdef.css">
-    <link rel="stylesheet" href="theme/ayu-dark.css">
-    <link rel="stylesheet" href="theme/base16-dark.css">
-    <link rel="stylesheet" href="theme/bespin.css">
-    <link rel="stylesheet" href="theme/blackboard.css">
-    <link rel="stylesheet" href="theme/cobalt.css">
-    <link rel="stylesheet" href="theme/colorforth.css">
-    <link rel="stylesheet" href="theme/dracula.css">
-    <link rel="stylesheet" href="theme/duotone-dark.css">
-    <link rel="stylesheet" href="theme/erlang-dark.css">
-    <link rel="stylesheet" href="theme/gruvbox-dark.css">
-    <link rel="stylesheet" href="theme/hopscotch.css">
-    <link rel="stylesheet" href="theme/icecoder.css">
-    <link rel="stylesheet" href="theme/isotope.css">
-    <link rel="stylesheet" href="theme/juejin.css">
-    <link rel="stylesheet" href="theme/lesser-dark.css">
-    <link rel="stylesheet" href="theme/liquibyte.css">
-    <link rel="stylesheet" href="theme/lucario.css">
-    <link rel="stylesheet" href="theme/material.css">
-    <link rel="stylesheet" href="theme/material-darker.css">
-    <link rel="stylesheet" href="theme/material-palenight.css">
-    <link rel="stylesheet" href="theme/material-ocean.css">
-    <link rel="stylesheet" href="theme/mbo.css">
-    <link rel="stylesheet" href="theme/mdn-like.css">
-    <link rel="stylesheet" href="theme/midnight.css">
-    <link rel="stylesheet" href="theme/monokai.css">
-    <link rel="stylesheet" href="theme/moxer.css">
-    <link rel="stylesheet" href="theme/night.css">
-    <link rel="stylesheet" href="theme/nord.css">
-    <link rel="stylesheet" href="theme/oceanic-next.css">
-    <link rel="stylesheet" href="theme/panda-syntax.css">
-    <link rel="stylesheet" href="theme/paraiso-dark.css">
-    <link rel="stylesheet" href="theme/paraiso-light.css">
-    <link rel="stylesheet" href="theme/pastel-on-dark.css">
-    <link rel="stylesheet" href="theme/railscasts.css">
-    <link rel="stylesheet" href="theme/rubyblue.css">
-    <link rel="stylesheet" href="theme/seti.css">
-    <link rel="stylesheet" href="theme/shadowfox.css">
-    <link rel="stylesheet" href="theme/solarized.css">
-    <link rel="stylesheet" href="theme/the-matrix.css">
-    <link rel="stylesheet" href="theme/tomorrow-night-bright.css">
-    <link rel="stylesheet" href="theme/twilight.css">
-    <link rel="stylesheet" href="theme/vibrant-ink.css">
-    <link rel="stylesheet" href="theme/xq-dark.css">
-    <link rel="stylesheet" href="theme/darcula.css">
-    <link rel="stylesheet" href="theme/yonce.css">
-    <link rel="stylesheet" href="theme/zenburn.css">
-    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preload" href="js/app.js" />
+    <link rel="preload" href="js/resize.js" />
+
+    <link rel="preload" href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js' as="script" />
+    <link rel="preload" href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js'
+        as="script" />
+    <link rel="preload" href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js'
+        as="script" />
+    <link rel="preload" href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/keymap/sublime.js' as="script" />
+    <link rel="preload" href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/addon/edit/closebrackets.js'
+        as="script" />
+    <link rel="preload" href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/addon/edit/closetag.js'
+        as="script" />
+    <link rel="preload" href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/addon/comment/comment.js'
+        as="script" />
+    <link rel="preload" href="addon/fold/foldcode.js" as="script" />
+    <link rel="preload" href="addon/fold/foldgutter.js" as="script" />
+    <link rel="preload" href="addon/fold/brace-fold.js" as="script" />
+    <link rel="preload" href="addon/fold/xml-fold.js" as="script" />
+    <link rel="preload" href="addon/fold/indent-fold.js" as="script" />
+    <link rel="preload" href="addon/fold/markdown-fold.js" as="script" />
+    <link rel="preload" href="addon/fold/comment-fold.js" as="script" />
+    <link rel="preload" href="mode/javascript/javascript.js" as="script" />
+    <link rel="preload" href="mode/xml/xml.js" as="script" />
+    <link rel="preload" href="mode/css/css.js" as="script" />
+    <link rel="preload" href="mode/htmlmixed/htmlmixed.js" as="script" />
+    <link rel="preload" href="mode/python/python.js" as="script" />
+    <link rel="preload" href="mode/markdown/markdown.js" as="script" />
+    <link rel="preload" href="addon/scroll/simplescrollbars.js" as="script" />
+    <link rel="preload" href="addon/hint/show-hint.js" as="script" />
+    <link rel="preload" href="addon/hint/xml-hint.js" as="script" />
+    <link rel="preload" href="addon/hint/html-hint.js" as="script" />
+    <link rel="preload" href="addon/edit/matchbrackets.js" as="script" />
+    <link rel="preload" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" as="script" />
+    <link rel="preload" type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+        as="script" />
+    <link rel="preload" nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" as="script" />
+    <link rel="preload" href="js/editor.js" as="script" />
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
+
+
+
+    <link rel="preload" href="lib/codemirror.css" as="style" />
+    <link rel="preload" href="addon/scroll/simplescrollbars.css" as="style" />
+    <link rel="preload" href="addon/hint/show-hint.css" as="style" />
+    <link rel="preload" href="addon/fold/foldgutter.css" as="style" />
+    <link rel="preload" href="theme/3024-night.css" as="style" />
+    <link rel="preload" href="theme/abbott.css" as="style" />
+    <link rel="preload" href="theme/abcdef.css" as="style" />
+    <link rel="preload" href="theme/ayu-dark.css" as="style" />
+    <link rel="preload" href="theme/base16-dark.css" as="style" />
+    <link rel="preload" href="theme/bespin.css" as="style" />
+    <link rel="preload" href="theme/blackboard.css" as="style" />
+    <link rel="preload" href="theme/cobalt.css" as="style" />
+    <link rel="preload" href="theme/colorforth.css" as="style" />
+    <link rel="preload" href="theme/dracula.css" as="style" />
+    <link rel="preload" href="theme/duotone-dark.css" as="style" />
+    <link rel="preload" href="theme/erlang-dark.css" as="style" />
+    <link rel="preload" href="theme/gruvbox-dark.css" as="style" />
+    <link rel="preload" href="theme/hopscotch.css" as="style" />
+    <link rel="preload" href="theme/icecoder.css" as="style" />
+    <link rel="preload" href="theme/isotope.css" as="style" />
+    <link rel="preload" href="theme/juejin.css" as="style" />
+    <link rel="preload" href="theme/lesser-dark.css" as="style" />
+    <link rel="preload" href="theme/liquibyte.css" as="style" />
+    <link rel="preload" href="theme/lucario.css" as="style" />
+    <link rel="preload" href="theme/material.css" as="style" />
+    <link rel="preload" href="theme/material-darker.css" as="style" />
+    <link rel="preload" href="theme/material-palenight.css" as="style" />
+    <link rel="preload" href="theme/material-ocean.css" as="style" />
+    <link rel="preload" href="theme/mbo.css" as="style" />
+    <link rel="preload" href="theme/mdn-like.css" as="style" />
+    <link rel="preload" href="theme/midnight.css" as="style" />
+    <link rel="preload" href="theme/monokai.css" as="style" />
+    <link rel="preload" href="theme/moxer.css" as="style" />
+    <link rel="preload" href="theme/night.css" as="style" />
+    <link rel="preload" href="theme/nord.css" as="style" />
+    <link rel="preload" href="theme/oceanic-next.css" as="style" />
+    <link rel="preload" href="theme/panda-syntax.css" as="style" />
+    <link rel="preload" href="theme/paraiso-dark.css" as="style" />
+    <link rel="preload" href="theme/paraiso-light.css" as="style" />
+    <link rel="preload" href="theme/pastel-on-dark.css" as="style" />
+    <link rel="preload" href="theme/railscasts.css" as="style" />
+    <link rel="preload" href="theme/rubyblue.css" as="style" />
+    <link rel="preload" href="theme/seti.css" as="style" />
+    <link rel="preload" href="theme/shadowfox.css" as="style" />
+    <link rel="preload" href="theme/solarized.css" as="style" />
+    <link rel="preload" href="theme/the-matrix.css" as="style" />
+    <link rel="preload" href="theme/tomorrow-night-bright.css" as="style" />
+    <link rel="preload" href="theme/twilight.css" as="style" />
+    <link rel="preload" href="theme/vibrant-ink.css" as="style" />
+    <link rel="preload" href="theme/xq-dark.css" as="style" />
+    <link rel="preload" href="theme/darcula.css" as="style" />
+    <link rel="preload" href="theme/yonce.css" as="style" />
+    <link rel="preload" href="theme/zenburn.css" as="style" />
+    <link rel="preload" href="css/style.css" as="style" />
+
+
+    <link rel="stylesheet" href="lib/codemirror.css" />
+    <link rel="stylesheet" href="addon/scroll/simplescrollbars.css" />
+    <link rel="stylesheet" href="addon/hint/show-hint.css" />
+    <link rel="stylesheet" href="addon/fold/foldgutter.css" / />
+    <link rel="stylesheet" href="theme/3024-night.css" />
+    <link rel="stylesheet" href="theme/abbott.css" />
+    <link rel="stylesheet" href="theme/abcdef.css" />
+    <link rel="stylesheet" href="theme/ayu-dark.css" />
+    <link rel="stylesheet" href="theme/base16-dark.css" />
+    <link rel="stylesheet" href="theme/bespin.css" />
+    <link rel="stylesheet" href="theme/blackboard.css" />
+    <link rel="stylesheet" href="theme/cobalt.css" />
+    <link rel="stylesheet" href="theme/colorforth.css" />
+    <link rel="stylesheet" href="theme/dracula.css" />
+    <link rel="stylesheet" href="theme/duotone-dark.css" />
+    <link rel="stylesheet" href="theme/erlang-dark.css" />
+    <link rel="stylesheet" href="theme/gruvbox-dark.css" />
+    <link rel="stylesheet" href="theme/hopscotch.css" />
+    <link rel="stylesheet" href="theme/icecoder.css" />
+    <link rel="stylesheet" href="theme/isotope.css" />
+    <link rel="stylesheet" href="theme/juejin.css" />
+    <link rel="stylesheet" href="theme/lesser-dark.css" />
+    <link rel="stylesheet" href="theme/liquibyte.css" />
+    <link rel="stylesheet" href="theme/lucario.css" />
+    <link rel="stylesheet" href="theme/material.css" />
+    <link rel="stylesheet" href="theme/material-darker.css" />
+    <link rel="stylesheet" href="theme/material-palenight.css" />
+    <link rel="stylesheet" href="theme/material-ocean.css" />
+    <link rel="stylesheet" href="theme/mbo.css" />
+    <link rel="stylesheet" href="theme/mdn-like.css" />
+    <link rel="stylesheet" href="theme/midnight.css" />
+    <link rel="stylesheet" href="theme/monokai.css" />
+    <link rel="stylesheet" href="theme/moxer.css" />
+    <link rel="stylesheet" href="theme/night.css" />
+    <link rel="stylesheet" href="theme/nord.css" />
+    <link rel="stylesheet" href="theme/oceanic-next.css" />
+    <link rel="stylesheet" href="theme/panda-syntax.css" />
+    <link rel="stylesheet" href="theme/paraiso-dark.css" />
+    <link rel="stylesheet" href="theme/paraiso-light.css" />
+    <link rel="stylesheet" href="theme/pastel-on-dark.css" />
+    <link rel="stylesheet" href="theme/railscasts.css" />
+    <link rel="stylesheet" href="theme/rubyblue.css" />
+    <link rel="stylesheet" href="theme/seti.css" />
+    <link rel="stylesheet" href="theme/shadowfox.css" />
+    <link rel="stylesheet" href="theme/solarized.css" />
+    <link rel="stylesheet" href="theme/the-matrix.css" />
+    <link rel="stylesheet" href="theme/tomorrow-night-bright.css" />
+    <link rel="stylesheet" href="theme/twilight.css" />
+    <link rel="stylesheet" href="theme/vibrant-ink.css" />
+    <link rel="stylesheet" href="theme/xq-dark.css" />
+    <link rel="stylesheet" href="theme/darcula.css" />
+    <link rel="stylesheet" href="theme/yonce.css" />
+    <link rel="stylesheet" href="theme/zenburn.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body class="horizontal">
@@ -170,36 +270,36 @@
     </div>
 
 
-    <script src="js/app.js"></script>
+    <script src="js/app.js" defer></script>
 
-    <script src="js/resize.js"></script>
+    <script src="js/resize.js" defer></script>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/keymap/sublime.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/addon/edit/closebrackets.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/addon/edit/closetag.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/addon/comment/comment.js'></script>
-    <script src="addon/fold/foldcode.js"></script>
-    <script src="addon/fold/foldgutter.js"></script>
-    <script src="addon/fold/brace-fold.js"></script>
-    <script src="addon/fold/xml-fold.js"></script>
-    <script src="addon/fold/indent-fold.js"></script>
-    <script src="addon/fold/markdown-fold.js"></script>
-    <script src="addon/fold/comment-fold.js"></script>
-    <script src="mode/javascript/javascript.js"></script>
-    <script src="mode/xml/xml.js"></script>
-    <script src="mode/css/css.js"></script>
-    <script src="mode/htmlmixed/htmlmixed.js"></script>
-    <script src="mode/python/python.js"></script>
-    <script src="mode/markdown/markdown.js"></script>
-    <script src="addon/scroll/simplescrollbars.js"></script>
-    <script src="addon/hint/show-hint.js"></script>
-    <script src="addon/hint/xml-hint.js"></script>
-    <script src="addon/hint/html-hint.js"></script>
-    <script src="addon/edit/matchbrackets.js"></script>
-    <script src="js/editor.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js' defer></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js' defer></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js' defer></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/keymap/sublime.js' defer></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/addon/edit/closebrackets.js' defer></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/addon/edit/closetag.js' defer></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/addon/comment/comment.js' defer></script>
+    <script src="addon/fold/foldcode.js" defer></script>
+    <script src="addon/fold/foldgutter.js" defer></script>
+    <script src="addon/fold/brace-fold.js" defer></script>
+    <script src="addon/fold/xml-fold.js" defer></script>
+    <script src="addon/fold/indent-fold.js" defer></script>
+    <script src="addon/fold/markdown-fold.js" defer></script>
+    <script src="addon/fold/comment-fold.js" defer></script>
+    <script src="mode/javascript/javascript.js" defer></script>
+    <script src="mode/xml/xml.js" defer></script>
+    <script src="mode/css/css.js" defer></script>
+    <script src="mode/htmlmixed/htmlmixed.js" defer></script>
+    <script src="mode/python/python.js" defer></script>
+    <script src="mode/markdown/markdown.js" defer></script>
+    <script src="addon/scroll/simplescrollbars.js" defer></script>
+    <script src="addon/hint/show-hint.js" defer></script>
+    <script src="addon/hint/xml-hint.js" defer></script>
+    <script src="addon/hint/html-hint.js" defer></script>
+    <script src="addon/edit/matchbrackets.js" defer></script>
+    <script src="js/editor.js" defer></script>
 
 
     <script>
