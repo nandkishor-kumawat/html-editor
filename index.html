@@ -5,8 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Editor</title>
+    <title>Real-Time Online HTML Editor</title>
     <link rel="shortcut icon" href="https://dl.dropboxusercontent.com/s/6ebxj5q11de638d/html_5.svg" type="image/x-icon">
+    <meta name="description" content="Experience the power of a real-time online HTML editor that allows you to make instant code changes. Boost your productivity with our intuitive interface and see your edits come to life in real-time. Try it now!">
+  
+
+    <meta property="og:title"
+        content="Real-Time Online HTML Editor for Instantaneous Code Changes | Boost Your Productivity">
+    <meta property="og:description"
+        content="Experience the power of a real-time online HTML editor that allows you to make instant code changes. Boost your productivity with our intuitive interface and see your edits come to life in real-time. Try it now!">
+    <meta property="og:image" content="https://dl.dropboxusercontent.com/s/6ebxj5q11de638d/html_5.svg"> <!-- URL to your OpenGraph image -->
+    <meta property="og:url" content="https://nandkishor-kumawat.github.io/html-editor/"> <!-- URL to your website -->
+    <meta property="og:type" content="website">
+
+    <!-- Twitter meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+        content="Real-Time Online HTML Editor for Instantaneous Code Changes | Boost Your Productivity">
+    <meta name="twitter:description"
+        content="Experience the power of a real-time online HTML editor that allows you to make instant code changes. Boost your productivity with our intuitive interface and see your edits come to life in real-time. Try it now!">
+    <meta name="twitter:image" content="https://dl.dropboxusercontent.com/s/6ebxj5q11de638d/html_5.svg"> <!-- URL to your Twitter image -->
+    <meta name="twitter:url" content="https://nandkishor-kumawat.github.io/html-editor/">
 
     <link rel="preload" href="js/app.js" />
     <link rel="preload" href="js/resize.js" />
@@ -226,8 +245,8 @@
         <div class="menubtns" onclick="restack()" title="Change layout">
             <ion-icon name="sync-outline"></ion-icon><span> Change layout</span>
         </div>
-        <div class="menubtns" id="liveeditor" onclick="togglelive()">
-            <ion-icon name="radio-outline"></ion-icon><span> Start Live Editor</span>
+        <div class="menubtns" id="liveeditor" live-editor="on" onclick="togglelive()">
+            <ion-icon name="pause-outline"></ion-icon> <span>Pause Live Editor</span>
         </div>
         <div class="menubtns">
             <ion-icon name="color-palette-outline"></ion-icon><select onchange="changeTheme()" id="themes"></select>
@@ -238,7 +257,7 @@
     </div>
     <div id="menuOverlay"></div>
     <div class="container">
-        <div class="container__left">
+        <div class="container__left" onkeyup="runCode()">
             <textarea autocomplete="off" id="textareaCode" wrap="logical" spellcheck="false" style="display: none;"><!DOCTYPE html>
 <html>
 <head>
