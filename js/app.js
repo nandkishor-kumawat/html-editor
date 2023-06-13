@@ -73,7 +73,7 @@ restack = () => {
 togglelive = () => {
     let liveeditor = document.querySelector('#liveeditor');
     let textareawrapper = document.querySelector('.container__left');
-    let status = liveeditor.getAttribute('live-editor') || 'false';
+    let status = liveeditor.getAttribute('live-editor') || 'true';
     let newStatus = status === 'false' ? 'true' : 'false';
     switch (status) {
         case 'false':
