@@ -73,19 +73,19 @@ restack = () => {
 togglelive = () => {
     let liveeditor = document.querySelector('#liveeditor');
     let textareawrapper = document.querySelector('.container__left');
-    let status = liveeditor.getAttribute('live-editor') || 'true';
-    let newStatus = status === 'false' ? 'true' : 'false';
-    switch (status) {
-        case 'false':
-        default:
+    let status = liveeditor.getAttribute('live-editor');
+    let newStatus = status === 'off' ? 'on' : 'off';
+    switch (newStatus) {
+        case 'on':
             textareawrapper.setAttribute('onkeyup', 'runCode()');
             liveeditor.innerHTML = `<ion-icon name="pause-outline"></ion-icon> <span>Pause Live Editor</span>`
             break;
-        case 'true':
+        case 'off':
             textareawrapper.removeAttribute('onkeyup', 'runCode()');
             liveeditor.innerHTML = `<ion-icon name="radio-outline"></ion-icon> <span>Start Live Editor</span>`
             break;
     }
+
     liveeditor.setAttribute('live-editor', newStatus);
 }
 
